@@ -1,0 +1,88 @@
+#{extends 'admin-main.html' /}
+#{include 'admin/header.html'/}
+
+<div class="btn-toolbar">
+    <button class="btn btn-primary">New User</button>
+<!--     <a href="#importModal" role="button" data-toggle="modal"><button class="btn">Import</button></a> -->
+    <button class="btn" role="button" data-toggle="modal" data-target="#importModal">Import</button>
+    <button class="btn">Export</button>
+</div>
+<div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Url</th>
+          <th>Versions</th>
+          <th>Active?</th>
+          <th style="width: 36px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+      #{list items:libraries, as:'lib'}
+        <tr>
+          <td>${lib.id}</td>
+          <td>${lib.name}</td>
+          <td>${lib.link}</td>
+          <td>asd
+		  </td>
+          <td>${lib.active}</td>
+          <td>
+              <a href="user.html"><i class="icon-pencil"></i></a>
+              <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+          </td>
+        </tr>
+        #{/list}
+      </tbody>
+    </table>
+</div>
+<div class="pagination">
+    <ul>
+        <li><a href="#">Prev</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">Next</a></li>
+    </ul>
+</div>
+<div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Delete Confirmation</h3>
+    </div>
+    <div class="modal-body">
+        <p class="error-text">Are you sure you want to delete the user?</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button class="btn btn-danger" data-dismiss="modal">Delete</button>
+    </div>
+</div>
+
+<div class="modal small hide fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="importModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">close</button>
+        <h3 id="importModalLabel">Import From File</h3>
+    </div>
+    <div class="modal-body">
+        <p class="info-text">Tab seperated file, comma seperated versions..</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button id="importButton" class="btn btn-danger" >Import</button>
+        <form action="@{Admin.importLibraries}" method="POST" id="importForm" enctype="multipart/form-data">
+        <input name="file" id="inputFile" type="file" style="visibility: hidden;position: absolute;top: 0;left: -5000px;">
+        #{authenticityToken/}
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).on('click','#importButton',function(){
+	$('#inputFile').click();
+});
+$(document).on('change','#inputFile',function(){
+	$("#importForm").submit();
+});
+</script>

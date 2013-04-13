@@ -1,0 +1,33 @@
+<div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse"
+                    data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span>
+                </a> <a class="brand" href="#" name="top">Library Review</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li ${tab == "home" ? "class='active'" : ""}><a href="@{Admin.home}"><i class="icon-home"></i>${"".pad(3).raw()}Home</a></li>
+                        <li ${tab == 'libraries' ? "class='active'" : ""}><a href="@{Admin.libraries}"><i class="icon-file"></i>${"".pad(3).raw()}Libraries</a></li>
+                        <li ${tab == 'actions' ? "class='active'" : ""}><a href="@{Admin.actions}"><i class="icon-envelope"></i>${"".pad(3).raw()}Latest Actions</a></li>
+<!--                         <li><a href="#"><i class="icon-signal"></i>Stats</a></li> -->
+<!--                         <li><a href="#"><i class="icon-lock"></i> Permissions</a></li> -->
+                    </ul>
+                    <div class="btn-group pull-right">
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="icon-user"></i> admin <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#"><i class="icon-share"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+            <!--/.container-fluid -->
+        </div>
+        <!--/.navbar-inner -->
+    </div>
+    <!--/.navbar -->
