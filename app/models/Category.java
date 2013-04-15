@@ -7,4 +7,9 @@ import play.db.jpa.Model;
 public class Category extends Model {
 
     public String name;
+    
+    @Override
+    public String toString() {
+        return name;
+    }
 }

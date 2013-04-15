@@ -46,7 +46,7 @@ class AdminServiceImpl implements AdminService {
                         library.active = Integer.valueOf(entry.getValue().toString()) == 1;
                     }
                     else if (fieldName.equals("description")) {
-                        library.description = entry.getValue().toString();
+                        library.descMarkdown = entry.getValue().toString();
                     }
                     else if (fieldName.equals("language")) {
                         library.language = (entry.getValue() == null) ? "unknown" : entry.getValue().toString();

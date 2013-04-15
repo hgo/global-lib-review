@@ -3,3 +3,4 @@
 require:
     - play
     - play -> guice 1.2
+    - play -> crud

@@ -134,6 +134,12 @@ public class Admin extends Controller {
         libraries();
     }
     
+    public static void library(String name){
+        Library lib = Library.findByName(name);
+        notFoundIfNull(lib);
+        render(lib);
+    }
+    
     @Catch(value=ServiceException.class)
     static void catchExc(ServiceException e){
         Logger.error(ExceptionUtils.getStackTrace(e.e));
