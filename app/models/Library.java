@@ -1,10 +1,13 @@
 package models;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -50,6 +53,20 @@ public class Library extends Model {
 
     public long last_updated;
     
+    /*********rating***********/
+    public int so_rating;
+    
+    public long so_last_updated;
+    
+    @ElementCollection
+    public Map<String, Integer> so_tagMap = new HashMap<String, Integer>();
+    
+    public int g_rating;
+    @ElementCollection
+    public Map<String, Integer> g_tagMap = new HashMap<String, Integer>();
+    
+    
+    /********************/
     @PreUpdate
     void preUpdate(){
         last_updated = Calendar.getInstance().getTimeInMillis();

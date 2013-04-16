@@ -10,7 +10,14 @@
     </div>
 
     <div id="crudListTable">
-        #{crud.table /}
+        #{crud.table fields:['name','esas']}
+        #{crud.custom 'esas'}
+	     <a href="@{Application.lib(object.id)}" target="_blank">
+	         ${object.name}
+	     </a>
+	   #{/crud.custom}
+        
+        #{/crud.table}
     </div>
 
     <div id="crudListPagination">
