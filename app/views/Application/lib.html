@@ -6,29 +6,39 @@
 
 <div class="container">
 	<div class="row-fluid">
-		<div class="span4"></div>
+		<div class="span4">
+            <h6>Github (${l.g_rating})</h6>
+            <div class="g">
+            #{list l.g_tagMap, as:'tm'}
+              <a href="#" rel="${tm.value}">${tm.key}</a>
+            #{/list}
+          </div>		
+		</div>
 		<div class="span4">
 		  <h4>${l.name}</h4>
-          <h6>(${l.so_rating})</h5>
           <p>${l.descMarkdown}</p>
-		  <div id="whatever">
+		</div>
+		<div class="span4">
+		  <div class="so">
+            <h6>Stackoverflow (${l.so_rating})</h6>
 			#{list l.so_tagMap, as:'tm'}
 			  <a href="#" rel="${tm.value}">${tm.key}</a>
 			#{/list}
 		  </div>
+		
 		</div>
-		<div class="span4"></div>
 	</div>
 </div>
 
 <script>
 $.fn.tagcloud.defaults = {
-  size: {start: 14, end: 18, unit: 'px'},
-  color: {start: '#cde', end: '#aaa'}
+  size: {start: 18, end: 28, unit: 'px'},
+  color: {start: '#006633', end: '#D44413'}
 };
 
 $(function () {
-  $('#whatever a').tagcloud();
+	$('.g a').tagcloud();
+	$('.so a').tagcloud();
 });
 </script>
 <br>

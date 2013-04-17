@@ -4,3 +4,4 @@ require:
     - play
     - play -> guice 1.2
     - play -> crud
+    - org.jsoup -> jsoup 0.2.2

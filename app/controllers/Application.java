@@ -18,11 +18,11 @@ public class Application extends Controller {
     }
     public static void lib(Long id) throws Exception {
         Library l = Library.findById(id);
-        long now = Calendar.getInstance().getTimeInMillis();
-        if(l.so_last_updated + (DateUtils.MILLIS_PER_DAY * 7) < now){
+//        long now = Calendar.getInstance().getTimeInMillis();
+//        if(l.so_last_updated + (DateUtils.MILLIS_PER_DAY * 7) < now){
             new LibraryCrawlJob(l.id).doJob();
             l = l.refresh();
-        }
+//        }
         render(l);
     }
 

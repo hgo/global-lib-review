@@ -54,6 +54,7 @@ public class Library extends Model {
     public long last_updated;
     
     /*********rating***********/
+    /*Stackoverflow*/
     public int so_rating;
     
     public long so_last_updated;
@@ -61,12 +62,18 @@ public class Library extends Model {
     @ElementCollection
     public Map<String, Integer> so_tagMap = new HashMap<String, Integer>();
     
+    
+    /*github*/
     public int g_rating;
+    public long g_last_updated;
+    public int g_open_issue_count;
+    public int g_closed_issue_count;
+    public int g_fork_count;
     @ElementCollection
     public Map<String, Integer> g_tagMap = new HashMap<String, Integer>();
-    
-    
     /********************/
+    
+    
     @PreUpdate
     void preUpdate(){
         last_updated = Calendar.getInstance().getTimeInMillis();
